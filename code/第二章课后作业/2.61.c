@@ -1,4 +1,4 @@
- /*
+/*
  * 2.61.c
  */
 
@@ -39,6 +39,30 @@ bool most_all_zero(const int x) {
 }
 
 int main(void) {
+    int all_bit_one = ~0;
+    int all_bit_zero = 0;
+
+    assert(all_one(all_bit_one));
+    assert(!all_zero(all_bit_one));
+    assert(least_all_one(all_bit_one));
+    assert(!most_all_zero(all_bit_one));
+
+    assert(!all_one(all_bit_zero));
+    assert(all_zero(all_bit_zero));
+    assert(!least_all_one(all_bit_zero));
+    assert(most_all_zero(all_bit_zero));
+
+    // test magic number 0x1234ff
+    assert(!all_one(0x1234ff));
+    assert(!all_zero(0x1234ff));
+    assert(least_all_one(0x1234ff));
+    assert(most_all_zero(0x1234ff));
+
+    // test magic number 0x1234
+    assert(!all_one(0x1234));
+    assert(!all_zero(0x1234));
+    assert(!least_all_one(0x1234));
+    assert(most_all_zero(0x1234));
 
     return 0;
 }
